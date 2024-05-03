@@ -25,6 +25,8 @@ export const register = createAsyncThunk(
       const res = await axios.post('/users/signup', credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
+      // console.log("auth/register res.data:", res.data)
+
       return res.data;
     } catch (error) {
       console.log("1")
@@ -44,6 +46,8 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/users/login', credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
+      // console.log("auth/login res.data:", res.data)
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -85,6 +89,7 @@ export const refreshUser = createAsyncThunk(
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
       const res = await axios.get('/users/current');
+      // console.log("auth/refresh res.data:", res.data)
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
