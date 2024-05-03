@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle';
 import { TaskList } from '../../components/TaskList/TaskList';
 import { TaskEditor } from '../../components/TaskEditor/TaskEditor';
-import { fetchTasks } from '../../redux/tasks/operations';
-import { selectLoading } from '../../redux/tasks/selectors';
+import { fetchTasks } from '../../redux/tasks_/operations';
+import { selectLoading } from '../../redux/tasks_/selectors';
 
 export default function TasksPage() {
   const dispatch = useDispatch();
