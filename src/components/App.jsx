@@ -7,26 +7,12 @@ import { PrivateRoute } from "./PrivateRoute";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 
-// import { fetchContacts } from '../redux/contactsOps';
-// import ContactForm from "./ContactForm/ContactForm";
-// import ContactList from "./ContactList/ContactList";
-// import SearchBox from "./SearchBox/SearchBox";
-
-import ContactsPage from "../pages/ContactsPage/ContactsPage"
-
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
-// const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
 
 const App = () => {
-  // const dispatch = useDispatch();
-  // const { loading, error } = useSelector(state => state.contacts)
-
-  // useEffect(() => {
-  //     dispatch(fetchContacts());
-  // }, [dispatch]);
-
   const dispatch = useDispatch();
   const { isRefreshing } = useSelector(selectIsRefreshing);
 
@@ -50,9 +36,4 @@ const App = () => {
 
 export default App;
 
-{
-  /* <h1>PhoneBook</h1>
-            <ContactForm />
-            <SearchBox />
-            <ContactList /> */
-}
+
