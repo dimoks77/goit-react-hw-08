@@ -1,13 +1,14 @@
 import css from './ContactList.module.css';
 import Contact from '../Contact/Contact';
 import { useSelector } from "react-redux";
-import { selectFilteredContacts } from '../../redux/contacts/slice';
+import { selectContacts } from '../../redux/contacts/selectors';
+
 
 const ContactList = () => {
-    const contacts = useSelector(selectFilteredContacts);
+    const contacts = useSelector(selectContacts);
     const isLoading = useSelector(state => state.contacts.isLoading);
     
-    console.log('Contacts in MyComponent::', contacts);
+    // console.log('Contacts in MyComponent::', contacts);
     
     if (isLoading) {
         return <div>Loading...</div>;

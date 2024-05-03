@@ -23,9 +23,7 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = false;
-        console.log('action.payload:', action.payload);
         state.items = action.payload;  
-        console.log('Contacts fetched successfully:', state.items);
       })
       .addCase(fetchContacts.rejected, (state) => {
         state.isLoading = false;
@@ -59,15 +57,5 @@ const contactsSlice = createSlice({
       });
   },
 });
-
-export const selectFilteredContacts = createSelector(
-  state => state.contacts.items,
-  state => state.filters.name.toLowerCase(),
-  (contacts, filter) => {
-    return Array.isArray(contacts) ? contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter)
-    ) : [];
-  }
-);
 
 export const contactsReducer = contactsSlice.reducer;
