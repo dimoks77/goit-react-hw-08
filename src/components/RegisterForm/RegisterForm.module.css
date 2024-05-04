@@ -8,3 +8,21 @@
     margin-bottom: 16px;
   }
   
+  
+  .button {
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100px;
+    color: white;
+    background: gray;
+    font-size: 15px;
+    font-weight: 600;
+    height: 37px;
+}
+
+.button:hover {
+    color: black;
+    background: white;
+    font-weight: 600;
+}

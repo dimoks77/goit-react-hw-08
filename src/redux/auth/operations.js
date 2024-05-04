@@ -22,14 +22,15 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
+      console.log("auth/register credentials:", credentials); // Выводим данные перед отправкой запроса
       const res = await axios.post('/users/signup', credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
-      // console.log("auth/register res.data:", res.data)
+      console.log("auth/register res.data:", res.data)
 
       return res.data;
     } catch (error) {
-      console.log("1")
+      console.log("auth/register error:", error.message); // Выводим сообщение об ошибке, если запрос не удался
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -3,8 +3,32 @@
     align-items: center;
     gap: 12px;
   }
-  
+
   .username {
     /* font-weight: 700; */
+    /* font-family: "Cormorant Garamond", serif; */
+    font-size: 16px;
   }
   
+
+  .username span {
+    /* font-weight: 700; */
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+  }
+  
+  .button {
+    border-radius: 5px;
+    width: 100px;
+    color: white;
+    background: gray;
+    font-size: 15px;
+    font-weight: 600;
+    height: 37px;
+}
+
+.button:hover {
+    color: black;
+    background: white;
+    font-weight: 600;
+}

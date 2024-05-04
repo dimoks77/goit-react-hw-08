@@ -6,7 +6,6 @@ export default function LoginPage() {
   return (
     <>
       <DocumentTitle>Login</DocumentTitle>
-      LOGIN PAGE
       <LoginForm />
     </>
   );

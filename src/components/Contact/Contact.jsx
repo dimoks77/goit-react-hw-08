@@ -19,10 +19,10 @@ const Contact = ({ contact }) => {
     <div className={css.card}>
       <div className={css.wrapper}>
         <p className={css.field}>
-          <FaUser /> {contact.name}
+          <FaUser size={14} /> {contact.name}
         </p>
         <p className={css.field}>
-          <FaPhone /> {contact.number}
+          <FaPhone  size={14} /> {contact.number}
         </p>
       </div>
       <button className={css.button} onClick={() => handleDelete(contact.id)}>

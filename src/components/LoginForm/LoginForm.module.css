@@ -1,10 +1,36 @@
 .form {
-    width: 320px;
+    width: 340px;
+    /* display: flex; */
+    /* gap: 10px; */
+    /* flex-direction: column; */
+    margin: 10px;
+    margin-top: 36px;
+    text-align: center;
+    font-size: 19px;
   }
   
   .label {
+    text-align: left;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
   }
-  
+
+  .button {
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100px;
+    color: white;
+    background: gray;
+    font-size: 15px;
+    font-weight: 600;
+    height: 37px;
+}
+
+.button:hover {
+    color: black;
+    background: white;
+    font-weight: 600;
+}
