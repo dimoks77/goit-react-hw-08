@@ -50,7 +50,7 @@ export const LoginForm = () => {
           </div>
           <div className={css.label}>
             <label>Password</label>
-            <Field type="password" name="password" />
+            <Field type="password" name="password" autocomplete="on" />
             <ErrorMessage name="password" component="div" className={css.error} />
           </div>
           <button className={css.button} type="submit">

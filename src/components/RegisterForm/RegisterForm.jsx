@@ -40,7 +40,7 @@ export const RegisterForm = () => {
           </div>
           <div className={css.label}>
             <label htmlFor="password">Password:</label>
-            <Field type="password" id="password" name="password" />
+            <Field type="password" id="password" name="password" autocomplete="on" />
             <ErrorMessage name="password" component="div" className={css.error} />
           </div>
           <button className={css.button} type="submit">
