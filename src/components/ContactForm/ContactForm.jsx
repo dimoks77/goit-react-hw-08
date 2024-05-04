@@ -19,6 +19,7 @@ const ContactForm = () => {
       }}
       validationSchema={contactScheme}
       onSubmit={(values, actions) => {
+        console.log(values);
         dispatch(addContact(values));
         actions.resetForm();
       }}
