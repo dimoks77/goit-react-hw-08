@@ -34,3 +34,8 @@
     background: white;
     font-weight: 600;
 }
+
+.error {
+  font-style: 14px;
+  color: orangered;
+}
