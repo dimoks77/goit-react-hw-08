@@ -6,6 +6,8 @@ import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
+import { Toaster } from 'react-hot-toast';
+
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
@@ -30,6 +32,7 @@ const App = () => {
         <Route path="/login" element={<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />} />
         <Route path="/contacts" element={ <PrivateRoute redirectTo="/login" component={<ContactsPage />} /> }/>
       </Routes>
+      <Toaster position="top-center" reverseOrder={false} />
     </Layout>
   );
 };
