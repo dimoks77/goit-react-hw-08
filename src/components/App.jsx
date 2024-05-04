@@ -6,13 +6,12 @@ import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
-import { Toaster } from 'react-hot-toast';
-
+import { Toaster } from "react-hot-toast";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
-const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,18 +24,16 @@ const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />} />
-        <Route path="/login" element={<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />} />
-        <Route path="/contacts" element={ <PrivateRoute redirectTo="/login" component={<ContactsPage />} /> }/>
-      </Routes>
-      <Toaster position="top-center" reverseOrder={false} />
-    </Layout>
+     <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />} />
+          <Route path="/login" element={<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />} />
+          <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}  />
+        </Routes>
+        <Toaster position="top-center" reverseOrder={false} />
+     </Layout>
   );
 };
 
 export default App;
-
-

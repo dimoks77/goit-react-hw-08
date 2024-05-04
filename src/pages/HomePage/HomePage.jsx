@@ -5,7 +5,6 @@ export default function HomePage() {
   return (
     <>
       <DocumentTitle>Home</DocumentTitle>
-
       <div className={css.container}>
         <h1 className={css.title}>
             PhoneBook
