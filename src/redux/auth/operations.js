@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from "react-hot-toast";
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+const baseAuthorizationURL = 'https://connections-api.herokuapp.com';
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
@@ -22,16 +22,13 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      console.log("auth/register credentials:", credentials); // Выводим данные перед отправкой запроса
-      const res = await axios.post('/users/signup', credentials);
+      console.log("auth/register credentials:", credentials);
+      const res = await axios.post(`${baseAuthorizationURL}/users/signup`, credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
-      console.log("auth/register res.data:", res.data)
-
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      // console.log("auth/register error:", error.message); // Выводим сообщение об ошибке, если запрос не удался
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -45,11 +42,9 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/login', credentials);
+      const res = await axios.post(`${baseAuthorizationURL}/users/login`, credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
-      // console.log("auth/login res.data:", res.data)
-
       return res.data;
     } catch (error) {
       toast.error(error.message);
@@ -64,7 +59,7 @@ export const logIn = createAsyncThunk(
  */
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    await axios.post(`${baseAuthorizationURL}/users/logout`);
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
     toast.success('You are logged out');
@@ -93,8 +88,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/current');
-      // console.log("auth/refresh res.data:", res.data)
+      const res = await axios.get(`${baseAuthorizationURL}/users/current`);
       return res.data;
     } catch (error) {
       toast.error(error.message);
