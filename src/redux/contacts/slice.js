@@ -1,6 +1,6 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from '../../redux/contacts/operations';
-import { logOut } from '../../redux/auth/operations'; // Import logOut operation
+import { logOut } from '../../redux/auth/operations';
 
 const initialState = {
   items: [],
