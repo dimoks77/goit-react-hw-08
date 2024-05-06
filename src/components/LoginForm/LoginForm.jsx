@@ -152,7 +152,10 @@ export const LoginForm = () => {
             email: "login77746616@maillll.com",
             password: "1234567",
           });
-        }} >* <u>Login for test</u></div>
+        }}
+      >
+        * <u>Login for test</u>
+      </div>
     </div>
   );
 };
