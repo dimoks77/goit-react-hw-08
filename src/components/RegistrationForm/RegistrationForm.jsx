@@ -6,8 +6,7 @@ import { Button, TextField } from "@mui/material";
 import { InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import KeyIcon from '@mui/icons-material/Key';
-// import generatePassword from 'password-generator';
-
+import Tooltip from '@mui/material/Tooltip';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ export const RegistrationForm = () => {
   const generateNewPassword = () => {
     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let newPassword = "";
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 12; i++) {
       newPassword += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     setValues(prevValues => ({
@@ -165,7 +164,8 @@ export const RegistrationForm = () => {
               endAdornment: (
                 <>
                   <InputAdornment position="end">
-                    <IconButton
+                  <Tooltip title={showPassword ? "Hide Password" : "Show Password"} placement="top" arrow>
+                                        <IconButton
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
                       edge="end"
@@ -179,10 +179,12 @@ export const RegistrationForm = () => {
                     >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
+                    </Tooltip>
                   </InputAdornment>
                   <InputAdornment position="end">
+                  <Tooltip title="Generate password" placement="top">
                     <IconButton
-                      aria-label="generate password"
+                      aria-label="Generate Password"
                       onClick={generateNewPassword}
                       edge="end"
                       sx={{
@@ -195,6 +197,7 @@ export const RegistrationForm = () => {
                     >
                       <KeyIcon />
                     </IconButton>
+                    </Tooltip>
                   </InputAdornment>
                 </>
               ),
