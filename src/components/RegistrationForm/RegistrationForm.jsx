@@ -157,6 +157,9 @@ export const RegistrationForm = () => {
                     sx={{
                       border: 0,
                       color: "#1976d2",
+                      '&:focus': {
+                        outline: 'none',
+                      },
                     }}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
