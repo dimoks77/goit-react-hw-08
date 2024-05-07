@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import { Button, TextField } from "@mui/material";
 import { InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Tooltip from '@mui/material/Tooltip';
+
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -116,6 +118,7 @@ export const LoginForm = () => {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
+                <Tooltip title={showPassword ? "Hide Password" : "Show Password"} placement="top" arrow>
                 <IconButton
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
@@ -130,6 +133,7 @@ export const LoginForm = () => {
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
+                </Tooltip>
               </InputAdornment>
             ),
           }}

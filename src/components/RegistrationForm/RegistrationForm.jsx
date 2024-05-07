@@ -182,7 +182,7 @@ export const RegistrationForm = () => {
                     </Tooltip>
                   </InputAdornment>
                   <InputAdornment position="end">
-                  <Tooltip title="Generate password" placement="top">
+                  <Tooltip title="Generate Password" placement="top">
                     <IconButton
                       aria-label="Generate Password"
                       onClick={generateNewPassword}
