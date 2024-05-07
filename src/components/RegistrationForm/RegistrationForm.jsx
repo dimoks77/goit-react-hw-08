@@ -1,54 +1,165 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import css from "./RegistrationForm.module.css";
+import { Button, TextField } from "@mui/material";
+import { InputAdornment, IconButton } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
 
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(register(values));
+    setValues({ name: "", email: "", password: "" });
+  };
+
   return (
-<> <h1 className={css.title}>Registration form</h1>
-      <Formik
-        initialValues={{
-          name: "",
-          email: "",
-          password: "",
-        }}
-        validationSchema={Yup.object({
-          name: Yup.string().required("Username is required"),
-          email: Yup.string().email("Invalid email address").required("Email is required"),
-          password: Yup.string()
-            .min(6, "Password must be at least 6 characters")
-            .required("Password is required"),
-        })}
-        onSubmit={(values, { resetForm }) => {
-          dispatch(register(values));
-          resetForm();
-        }}
-      >
-        <Form className={css.form}>
-          <div className={css.label}>
-            <label htmlFor="name">Name:</label>
-            <Field type="text" id="name" name="name" />
-            <ErrorMessage name="name" component="div" className={css.error} />
-          </div>
-          <div className={css.label}>
-            <label htmlFor="email">Email:</label>
-            <Field type="email" id="email" name="email" />
-            <ErrorMessage name="email" component="div" className={css.error} />
-          </div>
-          <div className={css.label}>
-            <label htmlFor="password">Password:</label>
-            <Field type="password" id="password" name="password" autoComplete="on" />
-            <ErrorMessage name="password" component="div" className={css.error} />
-          </div>
-          <button className={css.button} type="submit">
-            Register
-          </button>
-        </Form>
-      </Formik>
-</>
+    <>
+      <h1 className={css.title}>Registration form</h1>
+      <form className={css.form} autoComplete="off" onSubmit={handleSubmit}>
+        <div className={css.label}>
+          {/* <label htmlFor="name">Name:</label> */}
+          <TextField
+            label="Name"
+            type="text"
+            id="name"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            required
+            sx={{
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#1976d2",
+                borderWidth: "1px",
+              },
+              "& .MuiOutlinedInput-input": {
+                color: "white !important",
+              },
+              "& label": {
+                color: "#1976d2",
+              },
+              "& label.Mui-focused": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "white",
+                },
+                "&:hover fieldset": {
+                  borderColor: "white",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "white",
+                },
+              },
+            }}
+          />
+        </div>
+        <div className={css.label}>
+          <TextField
+            label="Email"
+            type="email"
+            id="email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            required
+            sx={{
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#1976d2",
+                borderWidth: "1px",
+              },
+              "& .MuiOutlinedInput-input": {
+                color: "white !important",
+              },
+              "& label": {
+                color: "#1976d2",
+              },
+              "& label.Mui-focused": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "white",
+                },
+                "&:hover fieldset": {
+                  borderColor: "white",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "white",
+                },
+              },
+            }}
+          />
+        </div>
+        <div className={css.label}>
+          <TextField
+            label="Password"
+            type="password"
+            id="password"
+            name="password"
+            value={values.password}
+            onChange={handleChange}
+            autoComplete="on"
+            required
+            sx={{
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#1976d2",
+                borderWidth: "1px",
+              },
+              "& .MuiOutlinedInput-input": {
+                color: "white !important",
+              },
+              "& label": {
+                color: "#1976d2",
+              },
+              "& label.Mui-focused": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "white",
+                },
+                "&:hover fieldset": {
+                  borderColor: "white",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "white",
+                },
+              },
+            }}
+          />
+        </div>
+        <Button
+          type="submit"
+          variant="outlined"
+          sx={{
+            color: "#1976d2",
+            width: "100%",
+            height: "60px",
+            margin: "auto",
+            display: "block",
+          }}
+        >
+          Register
+        </Button>
+      </form>
+    </>
   );
 };
-
