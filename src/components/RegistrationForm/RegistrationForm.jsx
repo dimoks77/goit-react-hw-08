@@ -15,6 +15,9 @@ export const RegistrationForm = () => {
     password: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prevValues) => ({
@@ -111,7 +114,7 @@ export const RegistrationForm = () => {
         <div className={css.label}>
           <TextField
             label="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="password"
             name="password"
             value={values.password}
@@ -143,6 +146,23 @@ export const RegistrationForm = () => {
                   borderColor: "white",
                 },
               },
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                    sx={{
+                      border: 0,
+                      color: "#1976d2",
+                    }}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
           />
         </div>
